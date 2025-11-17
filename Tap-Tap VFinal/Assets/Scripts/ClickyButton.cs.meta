@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 9871a0bb7df71c948b1d1e77e21c89a3
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - img: {instanceID: 0}
+  - defaultSprite: {instanceID: 0}
+  - pressed: {instanceID: 0}
+  - hover: {instanceID: 0}
+  - compressClip: {instanceID: 0}
+  - uncompressClip: {instanceID: 0}
+  - hoverClip: {instanceID: 0}
+  - source: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
