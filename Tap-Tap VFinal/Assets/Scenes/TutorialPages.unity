@@ -865,7 +865,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: bd7106707a52666478a7cdc41c398050, type: 3}
   - {fileID: 21300000, guid: 90e534bfa1ebda047b21f5140f5fa32d, type: 3}
   - {fileID: 21300000, guid: 97ea5302509c05a4ca666a6e879e6b40, type: 3}
-  mainMenuSceneName: MainMenu
+  mainMenuSceneName: NewMenu
 --- !u!4 &1721944696
 Transform:
   m_ObjectHideFlags: 0
