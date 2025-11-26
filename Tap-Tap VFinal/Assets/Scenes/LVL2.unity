@@ -4907,6 +4907,10 @@ PrefabInstance:
       propertyPath: HealthBar
       value: 
       objectReference: {fileID: 994505020}
+    - target: {fileID: 6614127823544574416, guid: 69681476f98c7224abe31137eb260e87, type: 3}
+      propertyPath: defeatSceneName
+      value: TimeOutScene LVL2
+      objectReference: {fileID: 0}
     - target: {fileID: 7369688813188546694, guid: 69681476f98c7224abe31137eb260e87, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -6892,6 +6896,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Protagonista_TapTap_V2
       objectReference: {fileID: 0}
+    - target: {fileID: 5867073564365327484, guid: de63f5410e044d245a5b6e7e64773a2c, type: 3}
+      propertyPath: groundCheckRadius
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7630917963886270420, guid: de63f5410e044d245a5b6e7e64773a2c, type: 3}
       propertyPath: healthBar
       value: 
@@ -6899,6 +6907,10 @@ PrefabInstance:
     - target: {fileID: 7630917963886270420, guid: de63f5410e044d245a5b6e7e64773a2c, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630917963886270420, guid: de63f5410e044d245a5b6e7e64773a2c, type: 3}
+      propertyPath: defeatSceneName
+      value: DefeatScene LVL2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7457,7 +7469,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6145f0b92918504595517914a0070f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameOverSceneName: DefeatScene
+  gameOverSceneName: DefeatScene LVL2
   playerTag: Player
 --- !u!1 &1621675539
 GameObject:
