@@ -35,6 +35,17 @@ public class PlayerBullet : MonoBehaviour
     {
         if (other.CompareTag(enemyTag))
         {
+            // Obtener punto de contacto aproximado (aquí usamos la posición de la bala)
+            Vector3 contactPoint = transform.position;
+
+            // Spawn efecto y reproducirlo delante del enemigo
+            if (EffectPool.Instance != null)
+            {
+                var effect = EffectPool.Instance.Spawn();
+                HitEffect he = effect.GetComponent<HitEffect>();
+                he.Play(other.transform, contactPoint);
+            }
+
             EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
             if (enemyHealth != null)
             {
