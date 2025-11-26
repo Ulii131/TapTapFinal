@@ -448,9 +448,6 @@ PrefabInstance:
       addedObject: {fileID: 1515414113626084213}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 77c601becd33aa847bb09ace82961172, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5535496173454955631}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 77c601becd33aa847bb09ace82961172, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 2978487061111179287}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 77c601becd33aa847bb09ace82961172, type: 3}
       insertIndex: -1
@@ -464,6 +461,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 77c601becd33aa847bb09ace82961172, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7630917963886270420}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 77c601becd33aa847bb09ace82961172, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8452154515185145621}
   m_SourcePrefab: {fileID: 100100000, guid: 77c601becd33aa847bb09ace82961172, type: 3}
 --- !u!4 &1172316387009346989 stripped
 Transform:
@@ -502,27 +502,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &5535496173454955631
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1949837801881069335}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 7.590456, y: 15.119373, z: 5.913583}
-  m_Center: {x: 0.076532364, y: 9.111876, z: -2.456791}
 --- !u!95 &2978487061111179287
 Animator:
   serializedVersion: 7
@@ -559,11 +538,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 8
   moveImpulse: 0.5
-  jumpForce: 5
+  jumpForce: 7
   groundLayer:
     serializedVersion: 2
     m_Bits: 128
-  groundCheckRadius: 0.2
+  groundCheckRadius: 1
 --- !u!114 &6914236006867670874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -594,8 +573,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sensitivity: 0.5
-  maxAngle: 5
-  smoothSpeed: 10
+  maxAngle: 20
+  smoothSpeed: 8
 --- !u!114 &7630917963886270420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -612,3 +591,26 @@ MonoBehaviour:
   currentHealth: 0
   showLogs: 1
   healthBar: {fileID: 0}
+--- !u!136 &8452154515185145621
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1949837801881069335}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 7.6
+  m_Height: 19.47
+  m_Direction: 1
+  m_Center: {x: 0, y: 7.87, z: -3.66}

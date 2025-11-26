@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d817390e656d6f4ba557a20e2d3af8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAmount: 10
+  damageAmount: 50
   blinkDuration: 0.1
   blinkColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!114 &6099189743749342936
