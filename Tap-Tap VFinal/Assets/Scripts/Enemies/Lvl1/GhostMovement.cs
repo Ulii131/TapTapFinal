@@ -3,27 +3,20 @@ using UnityEngine;
 
 public class GhostMovement : MonoBehaviour
 {
-    [Header("Configuración de Emergencia")]
-    [Tooltip("La altura final a la que flotará el fantasma (desde su posición inicial).")]
     public float emergenceHeight = 2f; 
-    [Tooltip("Velocidad de subida mientras emerge.")]
+
     public float emergenceSpeed = 1.5f;
     
-    [Header("Configuración de Movimiento Flotante")]
-    [Tooltip("Velocidad de avance en línea recta (flotando).")]
     public float forwardSpeed = 5f;
-    [Tooltip("Eje en el que avanzará el fantasma (ej: Vector3.forward para el eje Z).")]
     public Vector3 direction = Vector3.forward;
-
-    [Header("Ajuste de Movimiento")]
-    [Tooltip("El desplazamiento inicial en el eje X (asignado por el spawner para el cambio de carril).")]
-    public float lateralOffset = 0f; // NUEVA VARIABLE
-    
-    [Header("Configuración de Vida y Daño")]
-    [Tooltip("Tiempo en segundos antes de que el fantasma se destruya automáticamente.")]
+    public float lateralOffset = 0f; 
     public float lifetimeSeconds = 7f; 
-    [Tooltip("Cantidad de vida que se resta al jugador al colisionar (debe ser 10).")]
     public int damageAmount = 10; 
+    
+    // --- INICIO CÓDIGO DE SONIDO ---
+    public AudioSource ambientAudioSource;
+    public AudioClip ambientSpookySound;
+    // --- FIN CÓDIGO DE SONIDO ---
     
     private Vector3 targetPosition;
     private bool isEmerging = false;
@@ -42,8 +35,13 @@ public class GhostMovement : MonoBehaviour
         }
 
         // 2. Definir la posición objetivo una vez emerge
-        // La targetPosition también debe reflejar el desplazamiento lateral
         targetPosition = transform.position + (Vector3.up * emergenceHeight);
+        
+        // 3. Obtener AudioSource si no se asignó en el Inspector (seguridad)
+        if (ambientAudioSource == null)
+        {
+            ambientAudioSource = GetComponent<AudioSource>();
+        }
     }
 
     void Update()
@@ -58,6 +56,16 @@ public class GhostMovement : MonoBehaviour
             {
                 isEmerging = false;
                 isFloating = true;
+                
+                // --- INICIAR SONIDO AMBIENTAL ---
+                if (ambientAudioSource != null && ambientSpookySound != null)
+                {
+                    ambientAudioSource.clip = ambientSpookySound;
+                    ambientAudioSource.loop = true; // Reproducir en loop
+                    ambientAudioSource.Play();
+                }
+                // --- FIN CÓDIGO DE SONIDO ---
+
                 Debug.Log("Fantasma Termina de Emerger. Comienza a Flotar.");
             }
         }
@@ -110,5 +118,15 @@ public class GhostMovement : MonoBehaviour
     {
         // Se destruye si sale del campo de visión (método de limpieza)
         Destroy(gameObject);
+    }
+    
+    // --- INICIO CÓDIGO DE SONIDO (Limpieza) ---
+    void OnDestroy()
+    {
+        // Asegurar que el sonido se detenga si se destruye antes de tiempo
+        if (ambientAudioSource != null)
+        {
+            ambientAudioSource.Stop();
+        }
     }
 }

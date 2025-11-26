@@ -72,4 +72,15 @@ public class RhythmManager : MonoBehaviour
         // Devuelve true si estamos dentro del margen de tolerancia antes O después del beat
         return isNearPrevious || isNearNext;
     }
+
+    
+    public float GetBeatInterval()
+    {
+        return 60f / bpm;
+    }
+
+    public double GetTimingWindow()
+    {
+        return timingWindow;
+    }
 }

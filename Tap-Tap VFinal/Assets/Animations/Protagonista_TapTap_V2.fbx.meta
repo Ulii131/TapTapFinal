@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 53c2be25cff54534da405a2db53c46d0
+guid: 77c601becd33aa847bb09ace82961172
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -12,7 +12,7 @@ ModelImporter:
   materials:
     materialImportMode: 1
     materialName: 0
-    materialSearch: 1
+    materialSearch: 0
     materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
@@ -37,10 +37,10 @@ ModelImporter:
     clipAnimations:
     - serializedVersion: 16
       name: Idle_Protagonista
-      takeName: Scene
-      internalID: -623603649343465320
-      firstFrame: 1
-      lastFrame: 30
+      takeName: PersonajeArmature|Armature.001Action
+      internalID: -6209751245721073460
+      firstFrame: 0
+      lastFrame: 32
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -66,10 +66,10 @@ ModelImporter:
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: Block_Protagonista
-      takeName: Scene
-      internalID: -8800838248204228948
+      takeName: PersonajeArmature|Armature.001Action
+      internalID: 7656685987399777127
       firstFrame: 90
-      lastFrame: 102
+      lastFrame: 101
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -95,8 +95,8 @@ ModelImporter:
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: Attack_Protagonista
-      takeName: Scene
-      internalID: -491678979986718739
+      takeName: PersonajeArmature|Armature.001Action
+      internalID: 8407014707786672936
       firstFrame: 50
       lastFrame: 62
       wrapMode: 0
@@ -189,7 +189,7 @@ ModelImporter:
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 0
+  avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   importBlendShapeDeformPercent: 1
   remapMaterialsIfMaterialImportModeIsNone: 0
