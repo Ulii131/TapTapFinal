@@ -466,7 +466,7 @@ GameObject:
   - component: {fileID: 55958324}
   - component: {fileID: 55958323}
   - component: {fileID: 55958322}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Suelo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8306,7 +8306,7 @@ GameObject:
   - component: {fileID: 1003441733}
   - component: {fileID: 1003441732}
   - component: {fileID: 1003441731}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Suelo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12358,7 +12358,7 @@ GameObject:
   - component: {fileID: 1464213810}
   - component: {fileID: 1464213809}
   - component: {fileID: 1464213808}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Suelo (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14885,6 +14885,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 284504237724006660, guid: 1fdb94dea65a8dd4b8f877190c13c0ec, type: 3}
+      propertyPath: groundCheckRadius
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 284504237724006660, guid: 1fdb94dea65a8dd4b8f877190c13c0ec, type: 3}
       propertyPath: groundLayer.m_Bits
       value: 128
       objectReference: {fileID: 0}
@@ -15536,7 +15540,7 @@ GameObject:
   - component: {fileID: 1800179222}
   - component: {fileID: 1800179221}
   - component: {fileID: 1800179220}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Suelo (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
