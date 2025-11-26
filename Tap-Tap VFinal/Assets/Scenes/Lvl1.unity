@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 0
   m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.44210523, g: 0.5, b: 0, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: c9ec6e8fde1426847a863e9ea1b54790, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: c1c961cbd00909b45b34d97fd7df5cbf, type: 2}
   m_HaloStrength: 0.451
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -1262,6 +1262,8 @@ MonoBehaviour:
   emergenceHeight: 1
   emergenceSpeed: 7
   upDurationSeconds: 4
+  emergenceCrunchSound: {fileID: 8300000, guid: 1b0be3e9522b66d4bb78958967f09a4c, type: 3}
+  soundVolume: 0.8
 --- !u!65 &82625265
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1421,6 +1423,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 8698176589872578882, guid: 52b81639f4b0ece4799b58c50f85be23, type: 3}
   m_PrefabInstance: {fileID: 2114653116}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &98909561 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 381656231744158729, guid: 5fcdf0a670d924e46813753553193183, type: 3}
+  m_PrefabInstance: {fileID: 1644407723}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &101236885
 PrefabInstance:
@@ -2101,7 +2108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   riseHeight: 10
   animationSpeed: 10
-  durationInBeats: 13
+  durationInBeats: 8
   currentBPM: 110
 --- !u!65 &131204177
 BoxCollider:
@@ -3196,6 +3203,8 @@ MonoBehaviour:
   emergenceHeight: 1
   emergenceSpeed: 7
   upDurationSeconds: 4
+  emergenceCrunchSound: {fileID: 8300000, guid: 1b0be3e9522b66d4bb78958967f09a4c, type: 3}
+  soundVolume: 0.8
 --- !u!65 &159871733
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3400,6 +3409,75 @@ PrefabInstance:
       addedObject: {fileID: 1191522795}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52b81639f4b0ece4799b58c50f85be23, type: 3}
+--- !u!1001 &165993271
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1189682042208265435, guid: b690cb73b33aed849b8f65e31595dea7, type: 3}
+      propertyPath: m_Name
+      value: Scarecrow_B
+      objectReference: {fileID: 0}
+    - target: {fileID: 2002211976558444129, guid: b690cb73b33aed849b8f65e31595dea7, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2002211976558444129, guid: b690cb73b33aed849b8f65e31595dea7, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2002211976558444129, guid: b690cb73b33aed849b8f65e31595dea7, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2002211976558444129, guid: b690cb73b33aed849b8f65e31595dea7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 2002211976558444129, guid: b690cb73b33aed849b8f65e31595dea7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2002211976558444129, guid: b690cb73b33aed849b8f65e31595dea7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5.692026
+      objectReference: {fileID: 0}
+    - target: {fileID: 2002211976558444129, guid: b690cb73b33aed849b8f65e31595dea7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2002211976558444129, guid: b690cb73b33aed849b8f65e31595dea7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2002211976558444129, guid: b690cb73b33aed849b8f65e31595dea7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2002211976558444129, guid: b690cb73b33aed849b8f65e31595dea7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2002211976558444129, guid: b690cb73b33aed849b8f65e31595dea7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2002211976558444129, guid: b690cb73b33aed849b8f65e31595dea7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2002211976558444129, guid: b690cb73b33aed849b8f65e31595dea7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b690cb73b33aed849b8f65e31595dea7, type: 3}
 --- !u!1 &167522343
 GameObject:
   m_ObjectHideFlags: 0
@@ -3762,7 +3840,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   riseHeight: 10
   animationSpeed: 10
-  durationInBeats: 13
+  durationInBeats: 8
   currentBPM: 110
 --- !u!65 &204551161
 BoxCollider:
@@ -6216,7 +6294,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   riseHeight: 10
   animationSpeed: 10
-  durationInBeats: 13
+  durationInBeats: 8
   currentBPM: 110
 --- !u!65 &278511438
 BoxCollider:
@@ -7179,6 +7257,8 @@ MonoBehaviour:
   emergenceHeight: 1
   emergenceSpeed: 7
   upDurationSeconds: 4
+  emergenceCrunchSound: {fileID: 8300000, guid: 1b0be3e9522b66d4bb78958967f09a4c, type: 3}
+  soundVolume: 0.8
 --- !u!65 &311018573
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7309,6 +7389,8 @@ MonoBehaviour:
   emergenceHeight: 1
   emergenceSpeed: 7
   upDurationSeconds: 4
+  emergenceCrunchSound: {fileID: 8300000, guid: 1b0be3e9522b66d4bb78958967f09a4c, type: 3}
+  soundVolume: 0.8
 --- !u!65 &311233098
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8334,6 +8416,8 @@ MonoBehaviour:
   emergenceHeight: 1
   emergenceSpeed: 7
   upDurationSeconds: 4
+  emergenceCrunchSound: {fileID: 8300000, guid: 1b0be3e9522b66d4bb78958967f09a4c, type: 3}
+  soundVolume: 0.8
 --- !u!65 &355485128
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8782,6 +8866,8 @@ MonoBehaviour:
   emergenceHeight: 1
   emergenceSpeed: 7
   upDurationSeconds: 4
+  emergenceCrunchSound: {fileID: 8300000, guid: 1b0be3e9522b66d4bb78958967f09a4c, type: 3}
+  soundVolume: 0.8
 --- !u!65 &388100009
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11074,6 +11160,8 @@ MonoBehaviour:
   emergenceHeight: 1
   emergenceSpeed: 7
   upDurationSeconds: 4
+  emergenceCrunchSound: {fileID: 8300000, guid: 1b0be3e9522b66d4bb78958967f09a4c, type: 3}
+  soundVolume: 0.8
 --- !u!65 &503156963
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11439,6 +11527,7 @@ GameObject:
   - component: {fileID: 515280132}
   - component: {fileID: 515280131}
   - component: {fileID: 515280130}
+  - component: {fileID: 515280133}
   m_Layer: 0
   m_Name: Crater
   m_TagString: Untagged
@@ -11534,6 +11623,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 515280128}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &515280133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 515280128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6145f0b92918504595517914a0070f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameOverSceneName: DefeatScene
+  playerTag: Player
 --- !u!4 &516745144 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 231599325682483475, guid: 3c8772670f7f8e9478fa577f8630b365, type: 3}
@@ -12514,6 +12617,8 @@ MonoBehaviour:
   emergenceHeight: 1
   emergenceSpeed: 7
   upDurationSeconds: 4
+  emergenceCrunchSound: {fileID: 8300000, guid: 1b0be3e9522b66d4bb78958967f09a4c, type: 3}
+  soundVolume: 0.8
 --- !u!65 &556464299
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13801,7 +13906,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   riseHeight: 10
   animationSpeed: 10
-  durationInBeats: 13
+  durationInBeats: 8
   currentBPM: 110
 --- !u!65 &626531509
 BoxCollider:
@@ -13948,6 +14053,8 @@ MonoBehaviour:
   emergenceHeight: 1
   emergenceSpeed: 7
   upDurationSeconds: 4
+  emergenceCrunchSound: {fileID: 8300000, guid: 1b0be3e9522b66d4bb78958967f09a4c, type: 3}
+  soundVolume: 0.8
 --- !u!65 &633811906
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15300,7 +15407,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   riseHeight: 10
   animationSpeed: 10
-  durationInBeats: 13
+  durationInBeats: 8
   currentBPM: 110
 --- !u!65 &685285162
 BoxCollider:
@@ -15985,6 +16092,8 @@ MonoBehaviour:
   emergenceHeight: 1
   emergenceSpeed: 7
   upDurationSeconds: 4
+  emergenceCrunchSound: {fileID: 8300000, guid: 1b0be3e9522b66d4bb78958967f09a4c, type: 3}
+  soundVolume: 0.8
 --- !u!65 &697580977
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20230,6 +20339,8 @@ MonoBehaviour:
   emergenceHeight: 1
   emergenceSpeed: 7
   upDurationSeconds: 4
+  emergenceCrunchSound: {fileID: 8300000, guid: 1b0be3e9522b66d4bb78958967f09a4c, type: 3}
+  soundVolume: 0.8
 --- !u!65 &834086100
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20661,6 +20772,8 @@ MonoBehaviour:
   emergenceHeight: 1
   emergenceSpeed: 7
   upDurationSeconds: 4
+  emergenceCrunchSound: {fileID: 8300000, guid: 1b0be3e9522b66d4bb78958967f09a4c, type: 3}
+  soundVolume: 0.8
 --- !u!4 &853897254 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8698176589872578882, guid: 52b81639f4b0ece4799b58c50f85be23, type: 3}
@@ -21363,7 +21476,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   riseHeight: 10
   animationSpeed: 10
-  durationInBeats: 13
+  durationInBeats: 8
   currentBPM: 110
 --- !u!65 &880645866
 BoxCollider:
@@ -22631,6 +22744,8 @@ MonoBehaviour:
   emergenceHeight: 1
   emergenceSpeed: 7
   upDurationSeconds: 4
+  emergenceCrunchSound: {fileID: 8300000, guid: 1b0be3e9522b66d4bb78958967f09a4c, type: 3}
+  soundVolume: 0.8
 --- !u!65 &923392432
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23341,6 +23456,8 @@ MonoBehaviour:
   emergenceHeight: 1
   emergenceSpeed: 7
   upDurationSeconds: 4
+  emergenceCrunchSound: {fileID: 8300000, guid: 1b0be3e9522b66d4bb78958967f09a4c, type: 3}
+  soundVolume: 0.8
 --- !u!65 &959846499
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23514,7 +23631,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   riseHeight: 10
   animationSpeed: 10
-  durationInBeats: 13
+  durationInBeats: 8
   currentBPM: 110
 --- !u!65 &966802222
 BoxCollider:
@@ -24262,7 +24379,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   riseHeight: 10
   animationSpeed: 10
-  durationInBeats: 13
+  durationInBeats: 8
   currentBPM: 110
 --- !u!65 &998236514
 BoxCollider:
@@ -26393,6 +26510,8 @@ MonoBehaviour:
   emergenceHeight: 1
   emergenceSpeed: 7
   upDurationSeconds: 3
+  emergenceCrunchSound: {fileID: 8300000, guid: 1b0be3e9522b66d4bb78958967f09a4c, type: 3}
+  soundVolume: 0.8
 --- !u!65 &1092736177
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26872,6 +26991,8 @@ MonoBehaviour:
   emergenceHeight: 1
   emergenceSpeed: 7
   upDurationSeconds: 4
+  emergenceCrunchSound: {fileID: 8300000, guid: 1b0be3e9522b66d4bb78958967f09a4c, type: 3}
+  soundVolume: 0.8
 --- !u!65 &1105339087
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28115,6 +28236,8 @@ MonoBehaviour:
   emergenceHeight: 1
   emergenceSpeed: 7
   upDurationSeconds: 4
+  emergenceCrunchSound: {fileID: 8300000, guid: 1b0be3e9522b66d4bb78958967f09a4c, type: 3}
+  soundVolume: 0.8
 --- !u!1001 &1143873576
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30127,7 +30250,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 8175376411686238671, guid: e25d10fb7e569c54e8f5be51825d2e31, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 98909561}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e25d10fb7e569c54e8f5be51825d2e31, type: 3}
 --- !u!1001 &1260095146
@@ -30221,7 +30347,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   riseHeight: 10
   animationSpeed: 10
-  durationInBeats: 13
+  durationInBeats: 8
   currentBPM: 110
 --- !u!65 &1268747478
 BoxCollider:
@@ -30873,6 +30999,7 @@ GameObject:
   - component: {fileID: 1299093725}
   - component: {fileID: 1299093724}
   - component: {fileID: 1299093723}
+  - component: {fileID: 1299093726}
   m_Layer: 0
   m_Name: Crater (2)
   m_TagString: Untagged
@@ -30910,7 +31037,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -30968,6 +31095,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1299093721}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1299093726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1299093721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6145f0b92918504595517914a0070f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameOverSceneName: DefeatScene
+  playerTag: Player
 --- !u!4 &1299174361 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8698176589872578882, guid: 52b81639f4b0ece4799b58c50f85be23, type: 3}
@@ -35910,7 +36051,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   riseHeight: 10
   animationSpeed: 10
-  durationInBeats: 13
+  durationInBeats: 8
   currentBPM: 110
 --- !u!65 &1487957650
 BoxCollider:
@@ -37311,7 +37452,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   riseHeight: 10
   animationSpeed: 10
-  durationInBeats: 13
+  durationInBeats: 8
   currentBPM: 110
 --- !u!65 &1551370646
 BoxCollider:
@@ -38201,6 +38342,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 231599325682483475, guid: 3c8772670f7f8e9478fa577f8630b365, type: 3}
   m_PrefabInstance: {fileID: 692774154}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &1581988573 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8175376411686238671, guid: e25d10fb7e569c54e8f5be51825d2e31, type: 3}
+  m_PrefabInstance: {fileID: 1257071509}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1585176835
 PrefabInstance:
@@ -39811,6 +39957,108 @@ PrefabInstance:
       addedObject: {fileID: 1680875263}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52b81639f4b0ece4799b58c50f85be23, type: 3}
+--- !u!1001 &1644407723
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1581988573}
+    m_Modifications:
+    - target: {fileID: 381656231744158729, guid: 5fcdf0a670d924e46813753553193183, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 381656231744158729, guid: 5fcdf0a670d924e46813753553193183, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 381656231744158729, guid: 5fcdf0a670d924e46813753553193183, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 381656231744158729, guid: 5fcdf0a670d924e46813753553193183, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 381656231744158729, guid: 5fcdf0a670d924e46813753553193183, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 381656231744158729, guid: 5fcdf0a670d924e46813753553193183, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 381656231744158729, guid: 5fcdf0a670d924e46813753553193183, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 381656231744158729, guid: 5fcdf0a670d924e46813753553193183, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 381656231744158729, guid: 5fcdf0a670d924e46813753553193183, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 381656231744158729, guid: 5fcdf0a670d924e46813753553193183, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 381656231744158729, guid: 5fcdf0a670d924e46813753553193183, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 381656231744158729, guid: 5fcdf0a670d924e46813753553193183, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 381656231744158729, guid: 5fcdf0a670d924e46813753553193183, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 381656231744158729, guid: 5fcdf0a670d924e46813753553193183, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 381656231744158729, guid: 5fcdf0a670d924e46813753553193183, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 381656231744158729, guid: 5fcdf0a670d924e46813753553193183, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -16.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 381656231744158729, guid: 5fcdf0a670d924e46813753553193183, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 381656231744158729, guid: 5fcdf0a670d924e46813753553193183, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 381656231744158729, guid: 5fcdf0a670d924e46813753553193183, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 381656231744158729, guid: 5fcdf0a670d924e46813753553193183, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5498026147141465490, guid: 5fcdf0a670d924e46813753553193183, type: 3}
+      propertyPath: bpm
+      value: 110
+      objectReference: {fileID: 0}
+    - target: {fileID: 7043622174912787546, guid: 5fcdf0a670d924e46813753553193183, type: 3}
+      propertyPath: m_Name
+      value: Mira
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5498026147141465490, guid: 5fcdf0a670d924e46813753553193183, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5fcdf0a670d924e46813753553193183, type: 3}
 --- !u!1001 &1644502348
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40075,6 +40323,8 @@ MonoBehaviour:
   emergenceHeight: 1
   emergenceSpeed: 7
   upDurationSeconds: 4
+  emergenceCrunchSound: {fileID: 8300000, guid: 1b0be3e9522b66d4bb78958967f09a4c, type: 3}
+  soundVolume: 0.8
 --- !u!1001 &1648136781
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40884,6 +41134,8 @@ MonoBehaviour:
   emergenceHeight: 1
   emergenceSpeed: 7
   upDurationSeconds: 4
+  emergenceCrunchSound: {fileID: 8300000, guid: 1b0be3e9522b66d4bb78958967f09a4c, type: 3}
+  soundVolume: 0.8
 --- !u!65 &1706157368
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -41465,6 +41717,8 @@ MonoBehaviour:
   emergenceHeight: 1
   emergenceSpeed: 7
   upDurationSeconds: 4
+  emergenceCrunchSound: {fileID: 8300000, guid: 1b0be3e9522b66d4bb78958967f09a4c, type: 3}
+  soundVolume: 0.8
 --- !u!1 &1728087174
 GameObject:
   m_ObjectHideFlags: 0
@@ -41595,6 +41849,8 @@ MonoBehaviour:
   emergenceHeight: 1
   emergenceSpeed: 7
   upDurationSeconds: 4
+  emergenceCrunchSound: {fileID: 8300000, guid: 1b0be3e9522b66d4bb78958967f09a4c, type: 3}
+  soundVolume: 0.8
 --- !u!1001 &1729667982
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -42371,6 +42627,8 @@ MonoBehaviour:
   emergenceHeight: 1
   emergenceSpeed: 7
   upDurationSeconds: 4
+  emergenceCrunchSound: {fileID: 8300000, guid: 1b0be3e9522b66d4bb78958967f09a4c, type: 3}
+  soundVolume: 0.8
 --- !u!65 &1752754537
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -42936,7 +43194,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   riseHeight: 10
   animationSpeed: 10
-  durationInBeats: 13
+  durationInBeats: 8
   currentBPM: 110
 --- !u!65 &1774401349
 BoxCollider:
@@ -43114,6 +43372,8 @@ MonoBehaviour:
   emergenceHeight: 1
   emergenceSpeed: 7
   upDurationSeconds: 4
+  emergenceCrunchSound: {fileID: 8300000, guid: 1b0be3e9522b66d4bb78958967f09a4c, type: 3}
+  soundVolume: 0.8
 --- !u!65 &1776703784
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -44549,7 +44809,7 @@ MonoBehaviour:
   - {fileID: 1960755321}
   - {fileID: 626531508}
   - {fileID: 131204176}
-  initialDelayBeats: 6
+  initialDelayBeats: 5
   activationIntervalBeats: 1
 --- !u!4 &1817867421
 Transform:
@@ -44616,7 +44876,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   riseHeight: 10
   animationSpeed: 10
-  durationInBeats: 13
+  durationInBeats: 8
   currentBPM: 110
 --- !u!65 &1818759092
 BoxCollider:
@@ -45512,6 +45772,7 @@ GameObject:
   - component: {fileID: 1858396658}
   - component: {fileID: 1858396657}
   - component: {fileID: 1858396656}
+  - component: {fileID: 1858396659}
   m_Layer: 0
   m_Name: Crater (1)
   m_TagString: Untagged
@@ -45607,6 +45868,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1858396654}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1858396659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858396654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6145f0b92918504595517914a0070f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameOverSceneName: DefeatScene
+  playerTag: Player
 --- !u!1001 &1863157775
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -46760,6 +47035,8 @@ MonoBehaviour:
   emergenceHeight: 1
   emergenceSpeed: 7
   upDurationSeconds: 3
+  emergenceCrunchSound: {fileID: 8300000, guid: 1b0be3e9522b66d4bb78958967f09a4c, type: 3}
+  soundVolume: 0.8
 --- !u!1 &1918332410
 GameObject:
   m_ObjectHideFlags: 0
@@ -47530,6 +47807,8 @@ MonoBehaviour:
   emergenceHeight: 1
   emergenceSpeed: 7
   upDurationSeconds: 4
+  emergenceCrunchSound: {fileID: 8300000, guid: 1b0be3e9522b66d4bb78958967f09a4c, type: 3}
+  soundVolume: 0.8
 --- !u!65 &1936229224
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -47854,7 +48133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   riseHeight: 10
   animationSpeed: 10
-  durationInBeats: 13
+  durationInBeats: 8
   currentBPM: 110
 --- !u!65 &1946812333
 BoxCollider:
@@ -47983,7 +48262,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   riseHeight: 10
   animationSpeed: 10
-  durationInBeats: 13
+  durationInBeats: 8
   currentBPM: 110
 --- !u!65 &1960755322
 BoxCollider:
@@ -49232,6 +49511,8 @@ MonoBehaviour:
   emergenceHeight: 1
   emergenceSpeed: 7
   upDurationSeconds: 4
+  emergenceCrunchSound: {fileID: 8300000, guid: 1b0be3e9522b66d4bb78958967f09a4c, type: 3}
+  soundVolume: 0.8
 --- !u!65 &2025750114
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -50863,6 +51144,8 @@ MonoBehaviour:
   emergenceHeight: 1
   emergenceSpeed: 7
   upDurationSeconds: 4
+  emergenceCrunchSound: {fileID: 8300000, guid: 1b0be3e9522b66d4bb78958967f09a4c, type: 3}
+  soundVolume: 0.8
 --- !u!65 &2100316057
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -52332,7 +52615,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 284504237724006660, guid: 1fdb94dea65a8dd4b8f877190c13c0ec, type: 3}
       propertyPath: jumpForce
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 284504237724006660, guid: 1fdb94dea65a8dd4b8f877190c13c0ec, type: 3}
       propertyPath: groundCheckRadius
@@ -52507,3 +52790,4 @@ SceneRoots:
   - {fileID: 544764680}
   - {fileID: 1817867421}
   - {fileID: 1368412189}
+  - {fileID: 165993271}

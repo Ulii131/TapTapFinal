@@ -10,6 +10,13 @@ public class TimedTrainCrossing : MonoBehaviour
     [Tooltip("El componente MeshRenderer de la luz de advertencia (el material).")]
     public MeshRenderer warningLightRenderer;
     
+    // --- INICIO CÓDIGO DE SONIDO ---
+    [Header("Configuración de Audio del Tren")]
+    [Tooltip("El clip de sonido del tren (motor/traqueteo) a reproducir en loop.")]
+    public AudioClip trainPassSound;
+    private AudioSource trainAudioSource; // Referencia al AudioSource del tren
+    // --- FIN CÓDIGO DE SONIDO ---
+
     [Header("Configuración de Tiempo y Velocidad")]
     [Tooltip("Tiempo en segundos entre cada cruce (incluye el tiempo de cruce).")]
     public float cycleTime = 10f; 
@@ -38,15 +45,32 @@ public class TimedTrainCrossing : MonoBehaviour
             return;
         }
 
-        // 1. Calcular la velocidad necesaria para el cruce
+        // --- INICIO CÓDIGO DE SONIDO ---
+        // 1. Obtener el AudioSource del objeto del tren
+        trainAudioSource = trainObject.GetComponent<AudioSource>();
+        if (trainAudioSource == null)
+        {
+            Debug.LogWarning("El GameObject del tren no tiene un componente AudioSource. Añadiendo uno.");
+            trainAudioSource = trainObject.AddComponent<AudioSource>();
+        }
+        
+        if (trainAudioSource != null && trainPassSound != null)
+        {
+            trainAudioSource.clip = trainPassSound;
+            trainAudioSource.loop = true; // Configurar para que suene en loop
+            trainAudioSource.playOnAwake = false; // Asegurarse de que no suene al inicio
+        }
+        // --- FIN CÓDIGO DE SONIDO ---
+
+        // 2. Calcular la velocidad necesaria para el cruce
         trainSpeed = crossingDistance / crossingDuration;
 
-        // 2. Establecer puntos A y B
+        // 3. Establecer puntos A y B
         startPosition = trainObject.transform.position;
         // Asumiendo que el cruce es en el Eje X:
         endPosition = startPosition + new Vector3(crossingDistance, 0, 0); 
         
-        // 3. Inicializar el ciclo
+        // 4. Inicializar el ciclo
         SetLightColor(greenLightColor);
         StartCoroutine(TrainCycle());
     }
@@ -61,36 +85,49 @@ public class TimedTrainCrossing : MonoBehaviour
     {
         while (true) // Bucle infinito de cruce
         {
-            // --- Fase de Espera y Advertencia (7 segundos) ---
+            // --- Fase de Espera y Advertencia ---
             
-            // 1. Luz Verde: Dejar pasar (duración del ciclo menos el tiempo de cruce)
+            // Luz Verde: Dejar pasar
             float waitTime = cycleTime - crossingDuration;
-            
-            // Opcional: Podrías añadir un parpadeo en los últimos segundos aquí
             yield return new WaitForSeconds(waitTime); 
 
-            // --- Fase de Cruce (3 segundos) ---
+            // --- Fase de Cruce ---
             
-            // 2. Luz Roja: Viene el tren
+            // Luz Roja: Viene el tren
             SetLightColor(redLightColor);
             Debug.Log("¡Advertencia! Tren viene...");
 
-            // 3. Mover el tren y activar su Collider
+            // 1. Mover el tren y activar su Collider
             StartCoroutine(MoveTrain());
-
-            // 4. Esperar a que el tren termine de cruzar (el tiempo de cruce)
+            
+            // 2. Esperar a que el tren termine de cruzar
             yield return new WaitForSeconds(crossingDuration); 
 
-            // 5. Reiniciar posición y Luz Verde
+            // 3. Reiniciar posición y Luz Verde
             trainObject.transform.position = startPosition;
             SetLightColor(greenLightColor);
+            
+            // --- DETENER SONIDO (Al terminar el cruce) ---
+            if (trainAudioSource != null && trainAudioSource.isPlaying)
+            {
+                trainAudioSource.Stop();
+            }
+            // ---------------------------------------------
         }
     }
     
     private IEnumerator MoveTrain()
     {
         isCrossing = true;
-        // Opcional: Activar Collider aquí si el tren está desactivado en la espera
+        
+        // --- INICIAR SONIDO (Al comenzar el cruce) ---
+        if (trainAudioSource != null && !trainAudioSource.isPlaying)
+        {
+            trainAudioSource.Play();
+        }
+        // ---------------------------------------------
+        
+        // Activar Collider
         trainObject.GetComponent<Collider>().enabled = true; 
 
         float currentTravelTime = 0;
@@ -106,10 +143,10 @@ public class TimedTrainCrossing : MonoBehaviour
             yield return null; // Esperar al siguiente frame
         }
 
-        // Asegurar que el tren est exactamente en la posicin final para evitar imprecisiones de float
+        // Asegurar que el tren esté exactamente en la posición final 
         trainObject.transform.position = endPosition;
         
-        // Opcional: Desactivar Collider para la espera
+        // Desactivar Collider
         trainObject.GetComponent<Collider>().enabled = false; 
         isCrossing = false;
     }

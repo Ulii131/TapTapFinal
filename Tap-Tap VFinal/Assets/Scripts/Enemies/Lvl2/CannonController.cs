@@ -3,17 +3,27 @@ using System.Collections;
 
 public class CannonController : MonoBehaviour
 {
-
+    // Referencias
     public GameObject barrelPrefab;
     public Transform playerTarget; 
     
+    // Configuración Rítmica
     public int fireIntervalBeats = 4;
     private int currentBeatCounter = 0;
 
+    // Configuración Parabólica
     public float maxArcHeight = 10f; 
     public float timeToImpact = 1.5f;
 
+    // Configuración de Objetivo
     public float anticipationOffsetZ = 5f; 
+    
+    // --- INICIO CÓDIGO DE SONIDO ---
+
+    public AudioClip cannonFireSound;
+
+    public float soundVolume = 1.0f;
+    // --- FIN CÓDIGO DE SONIDO ---
 
     void Awake()
     {
@@ -43,6 +53,13 @@ public class CannonController : MonoBehaviour
             Debug.LogError("CannonController: ¡Faltan referencias!");
             return;
         }
+        
+        // --- DISPARAR SONIDO DEL CAÑÓN (antes de la lógica de instanciación) ---
+        if (cannonFireSound != null)
+        {
+            // PlayClipAtPoint es ideal para SFX de un solo uso que deben escucharse en la posición del cañón.
+            AudioSource.PlayClipAtPoint(cannonFireSound, transform.position, soundVolume);
+        }
 
         // Se calcula la posición del jugador, pero se le suma el offset para que el barril caiga delante de él.
         Vector3 playerPos = playerTarget.position;
@@ -53,11 +70,11 @@ public class CannonController : MonoBehaviour
             playerPos.z + anticipationOffsetZ 
         );
         
-        //  INSTANCIAR EL PROYECTIL
+        // INSTANCIAR EL PROYECTIL
         GameObject newBarrelGO = Instantiate(barrelPrefab, transform.position, Quaternion.identity);
         BarrelProjectile barrelScript = newBarrelGO.GetComponent<BarrelProjectile>();
 
-        //  LANZAR EL PROYECTIL
+        // LANZAR EL PROYECTIL
         if (barrelScript != null)
         {
             // Usar el tiempo total de impacto para que el jugador sepa cuánto dura la amenaza.
