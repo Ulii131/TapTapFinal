@@ -466,7 +466,7 @@ GameObject:
   - component: {fileID: 55958324}
   - component: {fileID: 55958323}
   - component: {fileID: 55958322}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Suelo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8539,7 +8539,7 @@ GameObject:
   - component: {fileID: 1003441733}
   - component: {fileID: 1003441732}
   - component: {fileID: 1003441731}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Suelo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12839,7 +12839,7 @@ GameObject:
   - component: {fileID: 1464213810}
   - component: {fileID: 1464213809}
   - component: {fileID: 1464213808}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Suelo (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16102,7 +16102,7 @@ GameObject:
   - component: {fileID: 1800179222}
   - component: {fileID: 1800179221}
   - component: {fileID: 1800179220}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Suelo (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18849,7 +18849,7 @@ GameObject:
   - component: {fileID: 2115473297}
   - component: {fileID: 2115473296}
   - component: {fileID: 2115473295}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Lines (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19517,6 +19517,14 @@ PrefabInstance:
     - target: {fileID: 1949837801881069335, guid: de63f5410e044d245a5b6e7e64773a2c, type: 3}
       propertyPath: m_Name
       value: Protagonista_TapTap_V2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5867073564365327484, guid: de63f5410e044d245a5b6e7e64773a2c, type: 3}
+      propertyPath: jumpForce
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5867073564365327484, guid: de63f5410e044d245a5b6e7e64773a2c, type: 3}
+      propertyPath: groundCheckRadius
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 7630917963886270420, guid: de63f5410e044d245a5b6e7e64773a2c, type: 3}
       propertyPath: healthBar
