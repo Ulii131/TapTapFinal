@@ -322,8 +322,8 @@ MonoBehaviour:
   exitButton: {fileID: 1950219972}
   tutorialPages:
   - {fileID: 21300000, guid: 82668421df4b2f747b2ecccb4d7a3f9b, type: 3}
-  - {fileID: 21300000, guid: 2e325af4e813f504b93b7092a2094210, type: 3}
-  - {fileID: 21300000, guid: cb7082d5c73ee4a4b914dc7ca859a134, type: 3}
+  - {fileID: 21300000, guid: 28b525e1f907756418566b0e35e16ff6, type: 3}
+  - {fileID: 21300000, guid: fd41ca5411a0768489142f3a84b600c5, type: 3}
   mainMenuSceneName: NewMenu
 --- !u!1 &80756617
 GameObject:
@@ -1847,7 +1847,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2e325af4e813f504b93b7092a2094210, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 28b525e1f907756418566b0e35e16ff6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
