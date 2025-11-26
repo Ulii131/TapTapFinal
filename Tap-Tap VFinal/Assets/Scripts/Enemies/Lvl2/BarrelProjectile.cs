@@ -58,7 +58,7 @@ public class BarrelProjectile : MonoBehaviour
         StartCoroutine(BlinkEffect());
         
         // Destruir el barril después de que el viaje termine
-        Destroy(gameObject, journeyDuration + 0.8f);
+        Destroy(gameObject, journeyDuration + 1.0f);
     }
 
     void Update()
