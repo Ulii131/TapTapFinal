@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Tap-Tap VFinal/Assets/Scripts/Enemies/Lvl1/Parkour/New Material 1.mat.meta
 guid: d060099731bdecf46a3a8feababd6bc3
+========
+guid: 52eb6915cfc009e4dba95670d272ea97
+>>>>>>>> 04d5beb36d314067dfe4108a32df3b47400678d7:Tap-Tap VFinal/Assets/Material/Bala.mat.meta
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 2100000
