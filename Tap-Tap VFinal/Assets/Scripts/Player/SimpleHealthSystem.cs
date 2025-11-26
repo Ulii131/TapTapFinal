@@ -17,6 +17,7 @@ public class SimpleHealthSystem : MonoBehaviour
     public event System.Action OnDamageTaken;
     public HealthBar healthBar;
     public event System.Action OnHealed;
+    public string defeatSceneName = "defeatScene";
 
     private void Awake()
     {
@@ -38,7 +39,7 @@ public class SimpleHealthSystem : MonoBehaviour
         if (currentHealth <= 0)
         {
             Die();
-            SceneManager.LoadScene("DefeatScene");
+            SceneManager.LoadScene(defeatSceneName);
         }
     }
 

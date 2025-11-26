@@ -6,6 +6,7 @@ public class Timer : MonoBehaviour
 {
     public HealthBar HealthBar;
     int tiempo = 60;
+    public string defeatSceneName = "defeatScene";
 
     void Start()
     {
@@ -22,7 +23,7 @@ public class Timer : MonoBehaviour
             yield return new WaitForSeconds(1f);
         }
 
-        SceneManager.LoadScene("TimeOutScene");
+        SceneManager.LoadScene(defeatSceneName);
     }
 
 }
