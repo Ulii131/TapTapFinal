@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &4146759832723832080
+--- !u!1001 &5110775625305341209
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 122648, guid: 11530f2b0a0cd2442949827ecbb622f2, type: 3}
       propertyPath: m_Name
-      value: Rayo Laser Variant
+      value: Rayo Laser
       objectReference: {fileID: 0}
     - target: {fileID: 436056, guid: 11530f2b0a0cd2442949827ecbb622f2, type: 3}
       propertyPath: m_LocalScale.x
@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 436056, guid: 11530f2b0a0cd2442949827ecbb622f2, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.5
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 436056, guid: 11530f2b0a0cd2442949827ecbb622f2, type: 3}
       propertyPath: m_LocalScale.z
@@ -26,15 +26,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 436056, guid: 11530f2b0a0cd2442949827ecbb622f2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.58
+      value: -11.85
       objectReference: {fileID: 0}
     - target: {fileID: 436056, guid: 11530f2b0a0cd2442949827ecbb622f2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.09
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 436056, guid: 11530f2b0a0cd2442949827ecbb622f2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 75.04
+      value: 87.02235
       objectReference: {fileID: 0}
     - target: {fileID: 436056, guid: 11530f2b0a0cd2442949827ecbb622f2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -82,23 +82,23 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 122648, guid: 11530f2b0a0cd2442949827ecbb622f2, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6816364265469359677}
+      addedObject: {fileID: 6328013144071976186}
     - targetCorrespondingSourceObject: {fileID: 122648, guid: 11530f2b0a0cd2442949827ecbb622f2, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2524645495715245560}
+      addedObject: {fileID: 7703897547438610531}
   m_SourcePrefab: {fileID: 100100000, guid: 11530f2b0a0cd2442949827ecbb622f2, type: 3}
---- !u!1 &4146759832723874312 stripped
+--- !u!1 &5110775625305383425 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 122648, guid: 11530f2b0a0cd2442949827ecbb622f2, type: 3}
-  m_PrefabInstance: {fileID: 4146759832723832080}
+  m_PrefabInstance: {fileID: 5110775625305341209}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6816364265469359677
+--- !u!114 &6328013144071976186
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4146759832723874312}
+  m_GameObject: {fileID: 5110775625305383425}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 85af5b7009eb5a44d80b2aa80d37c7a6, type: 3}
@@ -107,13 +107,13 @@ MonoBehaviour:
   damageAmount: 3
   speed: 0
   lifetime: 2
---- !u!135 &2524645495715245560
-SphereCollider:
+--- !u!136 &7703897547438610531
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4146759832723874312}
+  m_GameObject: {fileID: 5110775625305383425}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -125,6 +125,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 2
+  m_Radius: 3.7302926
+  m_Height: 101.8978
+  m_Direction: 1
+  m_Center: {x: 9.706349e-13, y: 50.066982, z: 1.2697107}
