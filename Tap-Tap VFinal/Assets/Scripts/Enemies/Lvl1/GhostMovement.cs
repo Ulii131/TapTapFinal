@@ -3,124 +3,112 @@ using UnityEngine;
 
 public class GhostMovement : MonoBehaviour
 {
-    [Header("Configuración de movimiento")]
-    public Transform[] positions; // Lugares donde se moverá el fantasma
-    public float moveDuration = 0.25f; // Para movimiento suave (si fadeTeleport es falso)
-    public bool fadeTeleport = true; // Si querés efecto de desvanecer
-    public float fadeDuration = 0.15f; // Duración del desvanecimiento/aparición
-
-    // Eliminamos la referencia a BeatIndcator
-
-    private int currentIndex = 0;
-    private Renderer rend;
-    private Material mat;
-    private bool isMoving = false;
+    [Header("Configuración de Emergencia")]
+    [Tooltip("La altura final a la que flotará el fantasma (desde su posición inicial).")]
+    public float emergenceHeight = 2f; 
+    [Tooltip("Velocidad de subida mientras emerge.")]
+    public float emergenceSpeed = 1.5f;
     
-    // Nueva Referencia al RhythmManager (Aunque no se usa directamente)
-    // private RhythmManager rhythmManager; 
+    [Header("Configuración de Movimiento Flotante")]
+    [Tooltip("Velocidad de avance en línea recta (flotando).")]
+    public float forwardSpeed = 5f;
+    [Tooltip("Eje en el que avanzará el fantasma (ej: Vector3.forward para el eje Z).")]
+    public Vector3 direction = Vector3.forward;
 
+    [Header("Ajuste de Movimiento")]
+    [Tooltip("El desplazamiento inicial en el eje X (asignado por el spawner para el cambio de carril).")]
+    public float lateralOffset = 0f; // NUEVA VARIABLE
+    
+    [Header("Configuración de Vida y Daño")]
+    [Tooltip("Tiempo en segundos antes de que el fantasma se destruya automáticamente.")]
+    public float lifetimeSeconds = 7f; 
+    [Tooltip("Cantidad de vida que se resta al jugador al colisionar (debe ser 10).")]
+    public int damageAmount = 10; 
+    
+    private Vector3 targetPosition;
+    private bool isEmerging = false;
+    private bool isFloating = false;
+    private bool hasDealtDamage = false; 
+    
     void Start()
     {
-        if (positions == null || positions.Length == 0)
+        // 1. Programar la destrucción del fantasma
+        Destroy(gameObject, lifetimeSeconds); 
+
+        // APLICAR MOVIMIENTO LATERAL: Ajustar la posición inicial en X
+        if (lateralOffset != 0f)
         {
-            Debug.LogWarning($"{name}: No hay posiciones asignadas.");
-            enabled = false;
+            transform.position += Vector3.right * lateralOffset;
+        }
+
+        // 2. Definir la posición objetivo una vez emerge
+        // La targetPosition también debe reflejar el desplazamiento lateral
+        targetPosition = transform.position + (Vector3.up * emergenceHeight);
+    }
+
+    void Update()
+    {
+        if (isEmerging)
+        {
+            // Mover hacia la posición objetivo (arriba)
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, emergenceSpeed * Time.deltaTime);
+
+            // Si llegamos a la posición objetivo, pasamos al estado flotante
+            if (Vector3.Distance(transform.position, targetPosition) < 0.01f)
+            {
+                isEmerging = false;
+                isFloating = true;
+                Debug.Log("Fantasma Termina de Emerger. Comienza a Flotar.");
+            }
+        }
+
+        if (isFloating)
+        {
+            // Mover hacia adelante en línea recta
+            transform.Translate(direction * forwardSpeed * Time.deltaTime, Space.World);
+        }
+    }
+    
+    /// <summary>
+    /// Detecta cuando el fantasma colisiona con otro objeto (ya que es un Trigger).
+    /// </summary>
+    private void OnTriggerEnter(Collider other)
+    {
+        // 1. Verificar si el daño ya fue aplicado o si el objeto no es el jugador
+        if (hasDealtDamage || !other.CompareTag("Player"))
+        {
             return;
         }
 
-        // Ya no necesitamos buscar el BeatIndcator
-        // rhythmManager = FindObjectOfType<RhythmManager>(); 
+        // 2. Obtener el componente de salud del jugador (usando SimpleHealthSystem)
+        SimpleHealthSystem playerHealth = other.GetComponent<SimpleHealthSystem>();
 
-        // 1. Obtener el material para el efecto fade
-        rend = GetComponent<Renderer>();
-        // Importante: Si el material es compartido, necesitas instanciarlo para que solo afecte a este fantasma
-        mat = rend.material; 
-        
-        transform.position = positions[currentIndex].position;
-        
-        // 2. Suscribirse al evento de beat
-        RhythmManager.OnBeat += MoveNextPositionOnBeat;
-
-        // NOTA: Eliminamos la coroutine MoveOnBeat() ya que el evento hace su trabajo.
-    }
-
-    void OnDestroy()
-    {
-        // 3. Desuscribirse al destruir para evitar errores
-        RhythmManager.OnBeat -= MoveNextPositionOnBeat;
-    }
-
-    // Este método se llama *exactamente* en cada beat gracias a la suscripción
-    void MoveNextPositionOnBeat()
-    {
-        // Solo permitir el movimiento si no está ya en curso
-        if (!isMoving)
+        if (playerHealth != null)
         {
-            StartCoroutine(MoveToNextPosition());
+            // 3. Aplicar el daño
+            playerHealth.TakeDamage(damageAmount);
+            hasDealtDamage = true; // Marca el daño como aplicado
+            
+            Debug.Log($"El fantasma colisionó con el jugador. Daño aplicado: {damageAmount}");
+            
+            // Opcional: Si quieres que el fantasma desaparezca inmediatamente después de golpear
+            // Destroy(gameObject);
         }
     }
+
     
-    // ------------------- COROUTINES DE MOVIMIENTO Y FADE -------------------
-
-    IEnumerator MoveToNextPosition()
+    /// <summary>
+    /// Método público para iniciar la secuencia de emergencia.
+    /// Es llamado por el GhostSpawner.
+    /// </summary>
+    public void EmergeAndMove()
     {
-        isMoving = true;
-        int nextIndex = (currentIndex + 1) % positions.Length;
-        Vector3 startPos = transform.position;
-        Vector3 endPos = positions[nextIndex].position;
-
-        if (fadeTeleport)
-        {
-            // Desvanecer (1 a 0)
-            yield return StartCoroutine(Fade(1, 0));
-            
-            // Teletransporte
-            transform.position = endPos;
-            
-            // Aparecer (0 a 1)
-            yield return StartCoroutine(Fade(0, 1));
-        }
-        else
-        {
-            // Movimiento suave (Lerp)
-            float elapsed = 0f;
-            while (elapsed < moveDuration)
-            {
-                elapsed += Time.deltaTime;
-                transform.position = Vector3.Lerp(startPos, endPos, elapsed / moveDuration);
-                yield return null;
-            }
-            transform.position = endPos;
-        }
-
-        currentIndex = nextIndex;
-        isMoving = false;
+        isEmerging = true;
     }
 
-    IEnumerator Fade(float from, float to)
+    private void OnBecameInvisible()
     {
-        // Asegurar que el material tiene la propiedad _Color
-        if (!mat.HasProperty("_Color"))
-        {
-            // Si no tiene _Color, intenta usar _BaseColor (para URP/HDRP)
-            if (!mat.HasProperty("_BaseColor"))
-                yield break;
-        }
-
-        Color c = mat.color;
-        float elapsed = 0f;
-        while (elapsed < fadeDuration)
-        {
-            elapsed += Time.deltaTime;
-            float a = Mathf.Lerp(from, to, elapsed / fadeDuration);
-            
-            // Asignar el nuevo color con transparencia
-            mat.color = new Color(c.r, c.g, c.b, a);
-            yield return null;
-        }
-        // Asegurar el valor final
-        mat.color = new Color(c.r, c.g, c.b, to);
+        // Se destruye si sale del campo de visión (método de limpieza)
+        Destroy(gameObject);
     }
-    
-    // NOTA: ELIMINAMOS LA COROUTINE MoveOnBeat() ORIGINAL
 }

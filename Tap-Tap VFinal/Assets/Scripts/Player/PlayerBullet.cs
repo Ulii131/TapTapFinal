@@ -8,7 +8,12 @@ public class PlayerBullet : MonoBehaviour
     [SerializeField] private float lifetime = 2f;
     [SerializeField] private string enemyTag = "Enemy";
 
+
     private Vector3 direction;
+
+    [SerializeField] private GameObject hitEffectPrefab;
+    [SerializeField] private float effectOffsetForward = 0.6f;
+    [SerializeField] private float effectOffsetUp = 0.25f;
 
     void Start()
     {
@@ -35,6 +40,25 @@ public class PlayerBullet : MonoBehaviour
     {
         if (other.CompareTag(enemyTag))
         {
+            // Obtener punto de contacto aproximado (aquí usamos la posición de la bala)
+            Vector3 contactPoint = transform.position;
+
+            // Instanciar efecto simple (sin pool)
+            if (hitEffectPrefab != null)
+            {
+                GameObject go = Instantiate(hitEffectPrefab, Vector3.zero, Quaternion.identity);
+                // si el prefab tiene HitEffect se le pasa el transform del enemigo y contactPoint
+                HitEffect he = go.GetComponent<HitEffect>();
+                if (he != null)
+                    he.Play(other.transform, contactPoint, effectOffsetForward, effectOffsetUp);
+                else
+                {
+                    // fallback: posicionar y destruir si no tiene script
+                    go.transform.position = other.transform.position + other.transform.forward * effectOffsetForward + Vector3.up * effectOffsetUp;
+                    Destroy(go, 0.5f);
+                }
+            }
+
             EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
             if (enemyHealth != null)
             {
