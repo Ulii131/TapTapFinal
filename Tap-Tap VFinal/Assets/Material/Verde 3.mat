@@ -34,7 +34,7 @@ Material:
     - _Brightness: 0.74
     - _Glossiness: 0.78
     - _Metallic: 0.41
-    - _Outline: 1.28
+    - _Outline: 1.3
     m_Colors:
     - _Color: {r: 0.44716918, g: 0, b: 0.5471698, a: 1}
   m_BuildTextureStacks: []

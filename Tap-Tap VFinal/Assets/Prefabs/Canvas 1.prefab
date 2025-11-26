@@ -702,4 +702,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   screenOverlay: {fileID: 6871183763401185357}
   bpmIndicator: {fileID: 3115095849223440255}
-  flashDuration: 0.2
+  flashDuration: 1
