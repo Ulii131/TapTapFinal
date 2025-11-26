@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/Scenes/DefeatScene.unity
     guid: 0b2f7e1b7f977274bbb6d10f49efcd95
   - enabled: 1
+    path: Assets/Scenes/TimeOutScene.unity
+    guid: 56f9d610b2779e64b9aad0de1e2072c6
+  - enabled: 1
     path: Assets/Scenes/WinScene.unity
     guid: 08ae8f651bfac2e498842b4899e33ac8
   - enabled: 1
