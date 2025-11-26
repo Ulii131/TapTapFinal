@@ -19518,6 +19518,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Protagonista_TapTap_V2
       objectReference: {fileID: 0}
+    - target: {fileID: 7630917963886270420, guid: de63f5410e044d245a5b6e7e64773a2c, type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 170275020}
+    - target: {fileID: 7630917963886270420, guid: de63f5410e044d245a5b6e7e64773a2c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
