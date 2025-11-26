@@ -9,7 +9,7 @@ public class PlayerShooter : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform firePoint;
     [SerializeField] private float bulletSpeed = 20f;
-    [SerializeField] private Animator anim_Protagonista;
+    //[SerializeField] private Animator anim_Protagonista;
     [SerializeField] private GameObject shield;
     Vector3 posInicialShield;
 
@@ -29,14 +29,14 @@ public class PlayerShooter : MonoBehaviour
         // Usar el RhythmManager para validar si el click es 'On Beat'
         if (Input.GetMouseButtonDown(1) && rhythmManager != null && rhythmManager.IsTimeToMove())
         {
-            anim_Protagonista.Play("Attack_Protagonista");
+            //anim_Protagonista.Play("Attack_Protagonista");
             Shoot();
 
         }
 
         if (Input.GetMouseButtonUp(0) && rhythmManager != null && rhythmManager.IsTimeToMove())
         {
-            anim_Protagonista.Play("Block_Protagonista");
+            //anim_Protagonista.Play("Block_Protagonista");
             StartCoroutine(ShieldActive(0.3f));
         }
     }

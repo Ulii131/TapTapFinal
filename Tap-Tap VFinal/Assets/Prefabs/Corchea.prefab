@@ -4951,6 +4951,9 @@ MonoBehaviour:
   speed: 20
   lifetime: 2
   enemyTag: Enemy
+  hitEffectPrefab: {fileID: 3551512579255775931, guid: 036a90964a16054448f9c7afdea188b2, type: 3}
+  effectOffsetForward: 1.2
+  effectOffsetUp: 2
 --- !u!65 &8562082144848906335
 BoxCollider:
   m_ObjectHideFlags: 0

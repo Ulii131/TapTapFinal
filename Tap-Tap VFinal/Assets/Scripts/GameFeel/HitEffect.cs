@@ -4,49 +4,65 @@ using UnityEngine;
 
 public class HitEffect : MonoBehaviour
 {
+    [Header("Animation")]
     public float maxScale = 1.5f;
-    public float scaleDuration = 0.12f; // tiempo de escalado rápido
-    public float lifeTime = 0.20f;      // tiempo total visible (incluye fade)
-    public float offsetForward = 0.5f;  // distancia delante del enemigo
+    public float scaleDuration = 0.12f;
+    public float lifeTime = 0.35f;
     public bool fadeOut = true;
 
+    [Header("Render")]
+    public bool useChildRenderer = true; // si el renderer está en el Quad hijo
+    public int forcedRenderQueue = 4000; // opcional: asegurar render encima
+
     Renderer rend;
+    Material runtimeMat; // copia simple para poder ajustar alpha si shader lo soporta
+    string colorProp = null;
 
     void Awake()
     {
-        rend = GetComponent<Renderer>();
+        rend = useChildRenderer ? GetComponentInChildren<Renderer>() : GetComponent<Renderer>();
+        if (rend != null && rend.sharedMaterial != null)
+        {
+            runtimeMat = new Material(rend.sharedMaterial);
+            rend.material = runtimeMat;
+            // detectar propiedades color comunes
+            if (runtimeMat.HasProperty("_Color")) colorProp = "_Color";
+            else if (runtimeMat.HasProperty("_BaseColor")) colorProp = "_BaseColor";
+            else colorProp = null;
+
+            // asegurar que se renderice por encima si hace falta
+            runtimeMat.renderQueue = forcedRenderQueue;
+        }
     }
 
-    // Play usando el transform del enemigo (coloca delante en su forward)
-    public void Play(Transform enemyTransform, Vector3 contactPoint)
+    // Called right after Instantiate to start the effect
+    public void Play(Transform enemyTransform, Vector3 contactPoint, float offsetForward = 0.6f, float offsetUp = 0.25f)
     {
-        StopAllCoroutines();
-
-        // Posicionar delante del enemigo si enemyTransform no es null,
-        // sino usar el contactPoint recibido
+        // Posicionar delante del enemigo si lo recibimos
+        Vector3 pos = contactPoint;
         if (enemyTransform != null)
-            transform.position = enemyTransform.position + enemyTransform.forward * offsetForward;
-        else
-            transform.position = contactPoint;
+            pos = enemyTransform.position + enemyTransform.forward * offsetForward + Vector3.up * offsetUp;
 
-        // Asegurar que mire a la cámara (billboard)
+        transform.position = pos;
+
+        // Billboard hacia la cámara principal si existe
         if (Camera.main != null)
-            transform.rotation = Quaternion.LookRotation(Camera.main.transform.position - transform.position);
+        {
+            Vector3 dir = Camera.main.transform.position - transform.position;
+            if (dir.sqrMagnitude > 0.0001f)
+                transform.rotation = Quaternion.LookRotation(dir);
+        }
 
         transform.localScale = Vector3.zero;
         gameObject.SetActive(true);
 
-        // Instanciar material para no modificar el sharedMaterial
-        if (rend != null)
-            rend.material = new Material(rend.material);
-
-        StartCoroutine(PlayRoutine());
+        StartCoroutine(RunRoutine());
     }
 
-    IEnumerator PlayRoutine()
+    IEnumerator RunRoutine()
     {
+        // Escalado rápido
         float t = 0f;
-        // escalar rápido
         while (t < scaleDuration)
         {
             t += Time.deltaTime;
@@ -56,36 +72,35 @@ public class HitEffect : MonoBehaviour
         }
         transform.localScale = Vector3.one * maxScale;
 
-        // vida + fade
+        // Vida y fade
         float elapsed = 0f;
         Color baseColor = Color.white;
-        if (rend != null) baseColor = rend.material.color;
+        bool canFade = (runtimeMat != null && colorProp != null && fadeOut);
+        if (canFade)
+        {
+            try { baseColor = runtimeMat.GetColor(colorProp); }
+            catch { canFade = false; }
+        }
 
         while (elapsed < lifeTime)
         {
             elapsed += Time.deltaTime;
-            if (fadeOut && rend != null)
+            if (canFade)
             {
                 float a = Mathf.Lerp(1f, 0f, elapsed / lifeTime);
-                Color c = baseColor;
-                c.a = a;
-                rend.material.color = c;
+                Color c = baseColor; c.a = a;
+                runtimeMat.SetColor(colorProp, c);
             }
             yield return null;
         }
 
-        // Reset alpha por si se reutiliza
-        if (rend != null)
-        {
-            Color c = rend.material.color;
-            c.a = 1f;
-            rend.material.color = c;
-        }
+        // limpiar y destruir
+        Destroy(gameObject);
+    }
 
-        // Devolver al pool
-        if (EffectPool.Instance != null)
-            EffectPool.Instance.Return(this);
-        else
-            gameObject.SetActive(false);
+    void OnDestroy()
+    {
+        if (runtimeMat != null)
+            Destroy(runtimeMat);
     }
 }

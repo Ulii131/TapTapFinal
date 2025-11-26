@@ -52358,6 +52358,10 @@ PrefabInstance:
       propertyPath: enemyLayer.m_Bits
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 3581217786365104303, guid: 1fdb94dea65a8dd4b8f877190c13c0ec, type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 5364507573933445376, guid: 901dc8b685b262549ab638c46b39e0d4, type: 3}
     - target: {fileID: 3859238009529459026, guid: 1fdb94dea65a8dd4b8f877190c13c0ec, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
