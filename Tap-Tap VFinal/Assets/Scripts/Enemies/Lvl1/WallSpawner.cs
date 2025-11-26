@@ -3,44 +3,35 @@ using System.Collections;
 
 public class WallSpawner : MonoBehaviour
 {
-    [Header("Referencias de Muro y Anuncio")]
-    [Tooltip("El Prefab de la Tumba o Muro que emerge.")]
     public GameObject wallPrefab;
-    [Tooltip("El Prefab de la luz/disco que anuncia la posición del muro.")]
+
     public GameObject warningLightPrefab;
     
-    [Header("Configuración Rítmica")]
-    [Tooltip("¡IMPORTANTE! Copia el BPM de tu RhythmManager aquí.")]
     public float currentBPM = 110f; // Necesario para calcular el tiempo de espera
     
-    [Tooltip("El número de beats que la luz de anuncio estará encendida antes de que la pared salga.")]
     public int beatsToWaitAfterWarning = 2; 
-    
-    [Tooltip("La probabilidad (0-100%) de que un muro sea programado en un beat, si no hay otro activo.")]
+
     [Range(0f, 100f)]
     public float spawnChance = 20f; 
     
-    [Header("Configuración de Emergencia del Muro")]
     public float initialVerticalOffset = -1.5f;
     public float emergenceHeight = 2f; 
     public float emergenceSpeed = 3f;
     
-    [Header("Configuración de Duración del Muro")]
-    [Tooltip("Tiempo en segundos que la tumba permanecerá levantada antes de hundirse.")]
     public float upDurationSeconds = 4f; 
+    
+    public AudioClip emergenceCrunchSound;
+    public float soundVolume = 0.8f;
     
     private GameObject currentWarningLight;
 
     void Awake()
     {
-        // FIX CS0070: Eliminamos la verificación de null en el evento.
-        // Asumimos que la clase RhythmManager y el evento estático están disponibles.
         RhythmManager.OnBeat += CheckAndSpawnWall; 
     }
 
     void OnDestroy()
     {
-        // FIX CS0070: Eliminamos la verificación de null en el evento.
         RhythmManager.OnBeat -= CheckAndSpawnWall;
     }
 
@@ -82,6 +73,14 @@ public class WallSpawner : MonoBehaviour
     
     private void SpawnWallLogic()
     {
+        // --- INICIAR SONIDO DE TIERRA/CRUNCH ---
+        if (emergenceCrunchSound != null)
+        {
+            // PlayClipAtPoint es el método ideal para SFX de un solo uso
+            AudioSource.PlayClipAtPoint(emergenceCrunchSound, transform.position, soundVolume);
+        }
+        // --- FIN CÓDIGO DE SONIDO ---
+        
         // La posición inicial del muro (sumergido)
         Vector3 spawnPosition = transform.position + (Vector3.up * initialVerticalOffset);
         
@@ -91,9 +90,6 @@ public class WallSpawner : MonoBehaviour
         StartCoroutine(WallLifeCycleAnimation(newWallGO));
     }
     
-    /// <summary>
-    /// Gestiona todo el ciclo de vida del muro: Subir, Esperar (4s), Bajar y Destruir.
-    /// </summary>
     private IEnumerator WallLifeCycleAnimation(GameObject wall)
     {
         Vector3 startPos = wall.transform.position; // Posición sumergida
