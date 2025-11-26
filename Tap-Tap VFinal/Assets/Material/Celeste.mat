@@ -7,12 +7,13 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: New Material 1
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_Parent: {fileID: 2100000, guid: a8b506159cd425c4dad1f9005ea5f22d, type: 2}
-  m_ModifiedSerializedProperties: 16
+  m_Name: Celeste
+  m_Shader: {fileID: 4800000, guid: 76374158b4c4e5744b394e9290aae693, type: 3}
+  m_Parent: {fileID: 2100000, guid: 6ec287e2544dd964aad3f88f12d86ffb, type: 2}
+  m_ModifiedSerializedProperties: 2
   m_ValidKeywords:
-  - _EMISSION
+  - _COLOR_ON
+  - _TEX_ON
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -26,12 +27,9 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
-    - _DstBlend: 0
-    - _Glossiness: 0.5
-    - _Mode: 0
-    - _ZWrite: 1
+    - _Glossiness: 0.78
+    - _Metallic: 0.41
     m_Colors:
-    - _Color: {r: 0, g: 0.8215718, b: 1, a: 1}
-    - _EmissionColor: {r: 0, g: 0.71642184, b: 1, a: 1}
+    - _Color: {r: 0.43137258, g: 0.8313726, b: 1, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
