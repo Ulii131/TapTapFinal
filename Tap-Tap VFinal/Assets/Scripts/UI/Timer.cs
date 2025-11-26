@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class Timer : MonoBehaviour
 {
     public HealthBar HealthBar;
-    int tiempo = 5;
+    int tiempo = 60;
     public string defeatSceneName = "defeatScene";
 
     void Start()
